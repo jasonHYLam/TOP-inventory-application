@@ -7,10 +7,11 @@ block content
         div.form-group
             label(for='name') Genre: 
             input.form-control(
-                type="text"
-                required='true'
-                placeholder='Folk, Pop, etc.'
-                value=(genre===undefined ? '' : genre.name)
+                type="text",
+                required='true',
+                placeholder='Folk, Pop, etc.',
+                name='name',
+                value=(genre===undefined ? '' : genre.name),
                 )
         button(type='submit') Submit
 
