@@ -3,12 +3,9 @@ extends layout
 block content 
     h1=title
 
-    p #{artist_list.length}
-    p !{artist_list.length}
+    p Artists added: #{artist_list.length}
 
-
-
-    if artist_list > 0
+    if artist_list.length > 0
         each artist in artist_list
             ul 
                 li 
