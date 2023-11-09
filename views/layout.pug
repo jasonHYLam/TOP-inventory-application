@@ -4,4 +4,29 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    block sidebar
+      ul 
+        li 
+          a(href='/home') Home
+        li 
+          a(href='/home/artists') All Artists
+        li 
+          a(href='/home/genres') All Genres
+        li 
+          a(href='/home/songs') All Songs
+        li 
+          a(href='/home/albums') All Albums
+
+        hr
+
+      ul 
+        li 
+          a(href='/home/artists/add') Add Artist
+        li 
+          a(href='/home/genres/add') Add Genre
+        li 
+          a(href='/home/songs/add') Add Song
+        li 
+          a(href='/home/albums/add') Add Album
+
     block content

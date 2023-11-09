@@ -1,13 +1,17 @@
+const song_controller = require("../controllers/songController");
+const artist_controller = require("../controllers/artistController");
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+// Redirect to home page.
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-router.get('/artists', function (req, res) {
-  res.render("artist_list");
+  res.redirect('/home');
 })
+/* GET home page. */
+router.get('/home', song_controller.home);
+
+router.get('/artists', artist_controller.artist_create_get);
+
+router.get('/artists/create')
 
 module.exports = router;
