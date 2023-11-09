@@ -13,6 +13,11 @@ exports.artist_list = asyncHandler(async(req, res, next) => {
 })
 
 exports.artist_detail = asyncHandler(async(req, res, next) => {
+    const artist = await Artist.findById(req.params.id).exec();
+    res.render("artist_detail.pug", {
+        title: artist.name,
+        artist: artist,
+    })
 })
 
 exports.artist_add_get = asyncHandler(async(req, res, next) => {
@@ -39,8 +44,8 @@ exports.artist_add_post = [
                 artist: artist,
                 errors: errors.array(),
             })
+            return;
         }
-
         else {
             await artist.save();
             res.redirect(artist.url);
@@ -48,14 +53,14 @@ exports.artist_add_post = [
 })
 ]
 
-exports.artist_list = asyncHandler(async(req, res, next) => {
-})
+// exports.artist_list = asyncHandler(async(req, res, next) => {
+// })
 
-exports.artist_list = asyncHandler(async(req, res, next) => {
-})
+// exports.artist_list = asyncHandler(async(req, res, next) => {
+// })
 
-exports.artist_list = asyncHandler(async(req, res, next) => {
-})
+// exports.artist_list = asyncHandler(async(req, res, next) => {
+// })
 
-exports.artist_list = asyncHandler(async(req, res, next) => {
-})
+// exports.artist_list = asyncHandler(async(req, res, next) => {
+// })

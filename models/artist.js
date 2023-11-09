@@ -7,5 +7,7 @@ const ArtistSchema = new Schema({
 })
 
 ArtistSchema.virtual("url").get(function() {
-    return `/artists/${this._id}`;
+    return `/home/artists/${this._id}`;
 });
+
+module.exports = mongoose.model("Artist", ArtistSchema);

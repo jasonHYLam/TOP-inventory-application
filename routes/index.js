@@ -10,8 +10,14 @@ router.get('/', function(req, res, next) {
 /* GET home page. */
 router.get('/home', song_controller.home);
 
+router.get('/home/artists/add', artist_controller.artist_add_get);
+router.post('/home/artists/add', artist_controller.artist_add_post);
+
+router.get('/home/artists/:id', artist_controller.artist_detail);
+
+
 router.get('/home/artists', artist_controller.artist_list);
 
-router.get('/home/artists/add', artist_controller.artist_add_get);
+
 
 module.exports = router;
