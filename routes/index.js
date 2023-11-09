@@ -21,9 +21,9 @@ router.get('/home/artists', artist_controller.artist_list);
 
 
 // Genres Routes And Methods
-router.get('home/genres/add', genre_controller.genre_add_get);
-router.post('home/genres/add', genre_controller.genre_add_post);
-router.get('home/genres/:id', genre_controller.genre_detail);
-router.get('home/genres', genre_controller.genre_list);
+router.get('/home/genres/add', genre_controller.genre_add_get);
+router.post('/home/genres/add', genre_controller.genre_add_post);
+router.get('/home/genres/:id', genre_controller.genre_detail);
+router.get('/home/genres', genre_controller.genre_list);
 
 module.exports = router;
