@@ -1,4 +1,4 @@
-const { validationResult } = require('express-validator');
+const { body, validationResult } = require('express-validator');
 const Genre = require('../models/genre');
 const asyncHandler = require('express-async-handler');
 
