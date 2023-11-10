@@ -4,8 +4,8 @@ const Playlist = require('../models/playlist');
 
 const asyncHandler = require('express-async-handler');
 
+const he = require('he')
 const { validationResult, body } = require('express-validator');
-const genre = require('../models/genre');
 
 // requires information about all models; songs, artists, albums, genres.
 // implement this later
@@ -36,7 +36,7 @@ exports.song_add_get = asyncHandler(async(req, res, next) => {
         Playlist.find({}).exec(),
     ])
 
-    res.render('song_list', {
+    res.render('song_form', {
         title: 'All Songs',
         genres: allGenres,
         playlists: allPlaylists,
@@ -50,6 +50,14 @@ exports.song_add_post = [
         if (!(req.body.genre instanceof Array)) {
             if (typeof req.body.genre === 'undefined') req.body.genre = [];
             else req.body.genre = new Array(req.body.genre);
+        }
+        next();
+    },
+
+    (req, res, next) => {
+        if (!(req.body.playlist instanceof Array)) {
+            if (typeof req.body.playlist === 'undefined') req.body.playlist = [];
+            else req.body.playlist = new Array(req.body.playlist);
         }
         next();
     },
@@ -82,10 +90,10 @@ exports.song_add_post = [
         errors = validationResult(req);
 
         const song = new Song({
-            title: req.body.title,
-            link: req.body.link,
-            artist: req.body.artist,
-            album: req.body.album,
+            title: he.decode(req.body.title),
+            link: he.decode(req.body.link),
+            artist: he.decode(req.body.artist),
+            album: he.decode(req.body.album),
             genre: req.body.genre,
             playlist: req.body.playlist,
         })

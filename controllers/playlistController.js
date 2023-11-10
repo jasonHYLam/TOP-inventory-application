@@ -13,7 +13,12 @@ exports.playlist_list = asyncHandler(async(req, res, next) => {
 })
 
 exports.playlist_detail = asyncHandler(async(req, res, next) => {
-    const playlist = await Playlist.findById(req.params.id).exec();
+    const playlist = await Playlist
+    .findById(req.params.id)
+    .populate('genre')
+    .populate('playlist')
+    .exec();
+
     res.render('playlist_detail', {
         title: playlist.name,
         playlist: playlist,

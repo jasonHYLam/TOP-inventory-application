@@ -25,4 +25,10 @@ router.post('/home/playlists/add', playlist_controller.playlist_add_post);
 router.get('/home/playlists/:id', playlist_controller.playlist_detail);
 router.get('/home/playlists', playlist_controller.playlist_list);
 
+// Song Routes And Method
+router.get('/home/songs/add', song_controller.song_add_get);
+router.post('/home/songs/add', song_controller.song_add_post);
+router.get('/home/songs/:id', song_controller.song_detail);
+router.get('/home/songs', song_controller.song_list);
+
 module.exports = router;

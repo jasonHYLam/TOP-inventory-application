@@ -5,7 +5,7 @@ block content
     h1=title 
     form(method='POST' action='')
         div.form-group
-            label(for='title')
+            label(for='title') Title (required)
             input.form-control(
                 type='text',
                 required='true',
@@ -15,7 +15,7 @@ block content
             )
         
         div.form-group
-            label(for='artist')
+            label(for='artist') Artist
             input.form-control(
                 type='text',
                 placeholder='Daft Punk',
@@ -24,7 +24,7 @@ block content
             )
         
         div.form-group
-            label(for='album')
+            label(for='album') Album
             input.form-control(
                 type='text',
                 placeholder='Aerodynamic',
@@ -33,7 +33,7 @@ block content
             )
         
         div.form-group
-            label(for='link')
+            label(for='link') Link
             input.form-control(
                 type='text',
                 placeholder='https://www.youtube.com/watch?v=dKJfJMMsqX4',
@@ -42,7 +42,7 @@ block content
             )
         
         div.form-group
-            label(for='genre')
+            label(for='genre') Genre
             div 
                 for genre in genres 
                     div 
@@ -56,9 +56,9 @@ block content
                         label(for=genre._id) #{genre.name}
 
         div.form-group
-            label(for='playlist')
+            label(for='playlist') Add To Playlist
             div 
-                for genre in genres 
+                for playlist in playlists
                     div 
                         input.checkbox-input(
                             type='checkbox',

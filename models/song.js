@@ -12,7 +12,7 @@ const SongSchema = new Schema({
 });
 
 SongSchema.virtual("url").get(function() {
-    return `/song/${this._id}`;
+    return `/home/songs/${this._id}`;
 })
 
 module.exports = mongoose.model("Song", SongSchema);
