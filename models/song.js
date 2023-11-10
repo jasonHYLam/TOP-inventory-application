@@ -4,10 +4,11 @@ const Schema = mongoose.Schema;
 
 const SongSchema = new Schema({
     title: {type: String, required: true, maxLength: 100},
-    artist: {type:Schema.Types.ObjectId, required: true, ref: "Artist"},
-    album: {type:Schema.Types.ObjectId, required: true, ref: "Album"},
+    link: {type: String, maxLength: 100},
+    artist: {type: String, maxLength: 100},
+    album: {type: String, maxLength: 100},
     genre: [{type:Schema.Types.ObjectId, ref: "Genre"}],
-    favorite_lyric: {type: String, required: true, maxLength: 100},
+    playlist: [{type:Schema.Types.ObjectId, ref: "Playlist"}],
 });
 
 SongSchema.virtual("url").get(function() {
