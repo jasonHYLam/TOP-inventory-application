@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PlaylistSchema = new Schema({
-    title: {type: String, required: 'true'}
+    name: {type: String, required: 'true'}
 })
 
 PlaylistSchema.virtual('url').get(function() {

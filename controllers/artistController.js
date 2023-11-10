@@ -14,7 +14,7 @@ exports.artist_list = asyncHandler(async(req, res, next) => {
 
 exports.artist_detail = asyncHandler(async(req, res, next) => {
     const artist = await Artist.findById(req.params.id).exec();
-    res.render("artist_detail.pug", {
+    res.render("artist_detail", {
         title: artist.name,
         artist: artist,
     })

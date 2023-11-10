@@ -32,6 +32,6 @@ router.get('/home/genres', genre_controller.genre_list);
 router.get('/home/playlists/add', playlist_controller.playlist_add_get);
 router.post('/home/playlists/add', playlist_controller.playlist_add_post);
 router.get('/home/playlists/:id', playlist_controller.playlist_detail);
-router.get('/home/playlists/', playlist_controller.playlist_list);
+router.get('/home/playlists', playlist_controller.playlist_list);
 
 module.exports = router;

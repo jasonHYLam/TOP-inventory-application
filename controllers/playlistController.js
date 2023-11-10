@@ -3,7 +3,6 @@ const Playlist = require('../models/playlist');
 const {validationResult, body} = require('express-validator');
 
 const asyncHandler = require('express-async-handler');
-const playlist = require('../models/playlist');
 
 exports.playlist_list = asyncHandler(async(req, res, next) => {
     const allPlaylists = await Playlist.find({}).exec();
@@ -18,6 +17,7 @@ exports.playlist_detail = asyncHandler(async(req, res, next) => {
     res.render('playlist_detail', {
         title: playlist.name,
         playlist: playlist,
+        // need to add songs and genres 
     })
 })
 
@@ -31,9 +31,8 @@ exports.playlist_add_post = [
     body("name")
     .trim()
     .isLength({min: 1})
-    .escape(),
-
-
+    .escape()
+    .withMessage("Name required"),
 
     asyncHandler(async(req, res, next) => {
 
@@ -44,7 +43,7 @@ exports.playlist_add_post = [
         })
 
         if (!errors.isEmpty()) {
-            res.render('playlist_list', {
+            res.render('playlist_form', {
                 title: 'Add Playlist',
                 playlist: playlist,
                 errors: errors.array(),

@@ -1,0 +1,14 @@
+extends layout 
+
+block content 
+
+    h1=title
+
+    if playlist_list.length > 0
+
+        ul 
+            each playlist in playlist_list 
+                li 
+                    a(href=playlist.url) #{playlist.name}
+    else 
+        p No playlists found. 
