@@ -1,0 +1,77 @@
+extends layout 
+
+block content 
+
+    h1=title 
+    form(method='POST' action='')
+        div.form-group
+            label(for='title')
+            input.form-control(
+                type='text',
+                required='true',
+                placeholder='Face To Face',
+                name='title',
+                value=(song===undefined ? '' : song.title)
+            )
+        
+        div.form-group
+            label(for='artist')
+            input.form-control(
+                type='text',
+                placeholder='Daft Punk',
+                name='artist',
+                value=(song===undefined ? '' : song.artist)
+            )
+        
+        div.form-group
+            label(for='album')
+            input.form-control(
+                type='text',
+                placeholder='Aerodynamic',
+                name='album',
+                value=(song===undefined ? '' : song.album)
+            )
+        
+        div.form-group
+            label(for='link')
+            input.form-control(
+                type='text',
+                placeholder='https://www.youtube.com/watch?v=dKJfJMMsqX4',
+                name='link',
+                value=(song===undefined ? '' : song.link)
+            )
+        
+        div.form-group
+            label(for='genre')
+            div 
+                for genre in genres 
+                    div 
+                        input.checkbox-input(
+                            type='checkbox',
+                            name='genre',
+                            id=genre._id,
+                            value=genre._id,
+                            checked=genre.checked
+                        )
+                        label(for=genre._id) #{genre.name}
+
+        div.form-group
+            label(for='playlist')
+            div 
+                for genre in genres 
+                    div 
+                        input.checkbox-input(
+                            type='checkbox',
+                            name='playlist',
+                            id=playlist._id,
+                            value=playlist._id,
+                            checked=playlist.checked
+                        )
+                        label(for=playlist._id) #{playlist.name}
+        
+        button(type='submit') Submit
+
+    if errors 
+        ul 
+            for error in errors 
+                li!=error.msg
