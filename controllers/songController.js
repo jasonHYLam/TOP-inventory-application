@@ -1,6 +1,4 @@
 const Song = require('../models/song');
-const Artist = require('../models/artist')
-const Album = require('../models/album');
 const Genre = require('../models/genre');
 const Playlist = require('../models/playlist');
 
@@ -61,6 +59,10 @@ exports.song_add_post = [
     .isLength({min: 1})
     .escape(),
 
+    body("link", "Set an song link")
+    .trim()
+    .escape(),
+
     body("artist", "Set an artist")
     .trim()
     .escape(),
@@ -81,6 +83,7 @@ exports.song_add_post = [
 
         const song = new Song({
             title: req.body.title,
+            link: req.body.link,
             artist: req.body.artist,
             album: req.body.album,
             genre: req.body.genre,
