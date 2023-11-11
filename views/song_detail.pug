@@ -5,6 +5,18 @@ block content
     h1=title 
 
     p=song.title
-    p !{song.link}
+    a(href=song.link) !{song.link}
     p=song.album
-    p=song.artist
+    p By !{song.artist}
+
+    h4 Genres:
+    ul
+        each genre in song.genre 
+            li
+                a(href=genre.url) !{genre.name}
+
+    h4 Playlists in:
+    ul
+        each playlist in song.playlist
+            li
+                a(href=playlist.url) !{playlist.name}

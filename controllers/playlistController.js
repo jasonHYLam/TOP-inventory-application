@@ -1,4 +1,5 @@
 const Playlist = require('../models/playlist');
+const Song = require('../models/song');
 
 const {validationResult, body} = require('express-validator');
 
@@ -13,15 +14,15 @@ exports.playlist_list = asyncHandler(async(req, res, next) => {
 })
 
 exports.playlist_detail = asyncHandler(async(req, res, next) => {
-    const playlist = await Playlist
-    .findById(req.params.id)
-    .populate('genre')
-    .populate('playlist')
-    .exec();
+    const [playlist, allSongsInPlaylist] = await Promise.all([
+        Playlist.findById(req.params.id).exec(),
+        Song.find({playlist: req.params.id}).exec(),
+    ])
 
     res.render('playlist_detail', {
         title: playlist.name,
         playlist: playlist,
+        songs: allSongsInPlaylist,
         // need to add songs and genres 
     })
 })

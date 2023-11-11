@@ -23,7 +23,11 @@ exports.song_list = asyncHandler(async(req, res, next) => {
 })
 
 exports.song_detail = asyncHandler(async(req, res, next) => {
-    const song = await Song.findById(req.params.id).exec();
+    const song = await Song
+    .findById(req.params.id)
+    .populate('genre')
+    .populate('playlist')
+    .exec();
     res.render('song_detail', {
         title: song.title,
         song: song,
