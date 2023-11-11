@@ -1,4 +1,6 @@
 const Genre = require('../models/genre');
+const Song = require('../models/song');
+
 const { body, validationResult } = require('express-validator');
 const asyncHandler = require('express-async-handler');
 
@@ -11,10 +13,15 @@ exports.genre_list = asyncHandler(async(req, res, next) => {
 })
 
 exports.genre_detail = asyncHandler(async(req, res, next) => {
-    const genre = await Genre.findById(req.params.id)
+    const [genre, allSongsInGenre] = await Promise.all([
+        Genre.findById(req.params.id).exec(),
+        Song.find({genre: req.params.id}).exec(),
+    ]);
+
     res.render('genre_detail', {
         title: genre.name,
         genre: genre,
+        songs: allSongsInGenre,
     })
 })
 
@@ -32,8 +39,8 @@ exports.genre_add_post = [
     .withMessage("Name required"),
 
     asyncHandler(async(req, res, next) => {
-        const errors = validationResult(req)
 
+        const errors = validationResult(req)
         const genre = new Genre({
             name: req.body.name
         })

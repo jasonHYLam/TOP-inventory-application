@@ -64,13 +64,7 @@ async function songCreate(index, title, link, artist, album, genre, playlist) {
     if (genre !== false) songDetail.genre = genre;
     if (playlist !== false) songDetail.playlist = playlist;
 
-    const song = new Song({
-        link: link,
-        artist: artist,
-        album: album,
-        genre: genre,
-        playlist: playlist,
-    })
+    const song = new Song(songDetail);
     await song.save();
     songs[index] = song;
     console.log(`Added song: ${song}`);

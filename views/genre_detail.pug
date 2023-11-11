@@ -2,3 +2,8 @@ extends layout
 
 block content 
     h1=title
+
+    ul 
+        each song in songs 
+            li 
+                a(href=song.url) !{song.title}
