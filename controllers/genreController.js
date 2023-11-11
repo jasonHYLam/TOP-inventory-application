@@ -62,7 +62,7 @@ exports.genre_add_post = [
 exports.genre_delete_get = asyncHandler(async(req, res, next) => {
     const genre = await Genre.findById(req.params.id).exec();
     res.render('genre_delete', {
-        title: 'Delete Genre'
+        title: 'Delete Genre',
         genre: genre,
     })
 })
