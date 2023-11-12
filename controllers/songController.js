@@ -15,7 +15,7 @@ exports.home = asyncHandler(async(req, res, next) => {
 })
 
 exports.song_list = asyncHandler(async(req, res, next) => {
-    const allSongs = await Song.find({}).exec();
+    const allSongs = await Song.find({}).populate('genre').exec();
     res.render('song_list', {
         title: 'All Songs',
         song_list: allSongs,

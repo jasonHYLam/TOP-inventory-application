@@ -6,9 +6,8 @@ block content
 
     if playlist_list.length > 0
 
-        ul 
-            each playlist in playlist_list 
-                li 
-                    a(href=playlist.url) #{playlist.name}
+        each playlist in playlist_list 
+            div.listing
+                a(href=playlist.url) #{playlist.name}
     else 
         p No playlists found. 
