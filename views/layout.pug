@@ -5,24 +5,26 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     block sidebar
-      ul 
-        li 
-          a(href='/home') Home
-        li 
-          a(href='/home/genres') All Genres
-        li 
-          a(href='/home/songs') All Songs
-        li 
-          a(href='/home/playlists') All Playlists
+      div.sidebar
+        ul 
+          li 
+            a(href='/home') Home
+          li 
+            a(href='/home/genres') All Genres
+          li 
+            a(href='/home/songs') All Songs
+          li 
+            a(href='/home/playlists') All Playlists
 
-        hr
+          hr
 
-      ul 
-        li 
-          a(href='/home/genres/add') Add Genre
-        li 
-          a(href='/home/songs/add') Add Song
-        li 
-          a(href='/home/playlists/add') Create Playlist
+        ul 
+          li 
+            a(href='/home/genres/add') Add Genre
+          li 
+            a(href='/home/songs/add') Add Song
+          li 
+            a(href='/home/playlists/add') Create Playlist
 
-    block content
+    div 
+      block content

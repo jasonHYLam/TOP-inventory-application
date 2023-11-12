@@ -58,17 +58,3 @@ exports.genre_add_post = [
         }
 })
 ]
-
-exports.genre_delete_get = asyncHandler(async(req, res, next) => {
-    const genre = await Genre.findById(req.params.id).exec();
-    res.render('genre_delete', {
-        title: 'Delete Genre',
-        genre: genre,
-    })
-})
-
-exports.genre_delete_post = asyncHandler(async(req, res, next) => {
-    // not sure if this works tbh. dunno if req params id is what i need
-    await Genre.findByIdAndDelete(req.params.id);
-    res.redirect('/home/genres')
-})
